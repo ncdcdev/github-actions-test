@@ -1,0 +1,41 @@
+name: test
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  unit-test:
+    name: unit test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: my-app
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: package install
+        run: npm ci
+      - name: run test
+        run: npm test
+
+  e2e-test:
+    name: e2e test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: run test
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: my-app
+          build: npm run build
+          start: npm start
