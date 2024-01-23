@@ -10,6 +10,7 @@ const Ncdc: NextPage = () => {
   return (
     <div>
       <h1>NCDC</h1>
+      <p>NCDCのページにようこそ</p>
       <div>
         <div>
           <button id="alert-message" onClick={alertMessage}>
