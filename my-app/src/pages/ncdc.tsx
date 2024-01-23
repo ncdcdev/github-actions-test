@@ -9,7 +9,7 @@ const Ncdc: NextPage = () => {
 
   return (
     <div>
-      <h1>NCDC</h1>
+      <h1>NC</h1>
       <div>
         <div>
           <button id="alert-message" onClick={alertMessage}>
